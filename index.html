@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temperature Converter</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: rgb(206, 246, 232);
+        }
+        .container {
+            border: 2px solid #040404;
+            padding: 20px;
+            border-radius: 5px;
+            text-align: center;
+            background-color:rgb(132, 227, 194);
+        }
+        input, select, button {
+            margin: 10px;
+            padding: 8px;
+        }
+        #result {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+        #convertButton{
+            background-color: rgb(30, 195, 88);
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="container1">
+        <h1>Temperature Converter</h1>
+        <input type="number" id="temperature" placeholder="Enter Temperature"><br>
+        <select id="conversionType">
+            <option value="celsiusToFahrenheit">Celsius to Fahrenheit</option>
+            <option value="fahrenheitToCelsius">Fahrenheit to Celsius</option>
+        </select><br>
+        <button id="convertButton" onclick="convertTemperature()">Convert</button><br>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        function convertTemperature() {
+            let temperature = parseFloat(document.getElementById('temperature').value);
+            let conversionType = document.getElementById('conversionType').value;
+            let result;
+
+            if (conversionType === 'celsiusToFahrenheit') {
+                result = (temperature * 9/5) + 32;
+                document.getElementById('result').innerHTML = temperature + "°C is " + result.toFixed(2) + "°F";
+            } else if (conversionType === 'fahrenheitToCelsius') {
+                result = (temperature - 32) * 5/9;
+                document.getElementById('result').innerHTML = temperature + "°F is " + result.toFixed(2) + "°C";
+            } else {
+                document.getElementById('result').innerHTML = "Invalid Conversion Type";
+            }
+        }
+    </script>
+</body>
+</html>
